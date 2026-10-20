@@ -1,4 +1,4 @@
-# Digital Student Services — Digital Certificates
+# Digital Student Services: Digital Certificates
 
 **Business Analysis | Systems Analysis | Education Technology**
 
