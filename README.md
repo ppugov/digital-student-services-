@@ -1,69 +1,67 @@
-Digital Student Services: Digital Certificates
+# Digital Student Services — Digital Certificates
 
-Business Analysis | Systems Analysis | Education Technology
+**Business Analysis | Systems Analysis | Education Technology**
 
-Digital certificate issuance within the GOMP / smart_edu university platform at Be Smart S.r.l. The project focused on streamlining certificate generation workflows, reducing manual processing, and improving service efficiency through business process optimization and systems analysis.
+## Project Overview
 
-The scope covered stakeholder requirements, business process modeling, functional and non functional requirements, API specifications, data modeling, and solution testing.
+Digital certificate issuance within the GOMP / smart_edu university platform at Be Smart S.r.l. The project focused on streamlining certificate-generation workflows, reducing manual processing, and improving service efficiency through business process optimization and systems analysis.
 
-The certificate issuance process involved substantial manual processing, creating opportunities to increase automation and reduce turnaround time.
+The scope covered stakeholder requirements, business process modeling, functional and non-functional requirements, API specifications, data modeling, and solution testing.
 
-Automated certificate generation
-Before: 20%
-After: 85%
+## Business Problem & Results
 
-Manual processing
-Before: 80%
-After: 15%
+The certificate-issuance process involved substantial manual processing, creating opportunities to increase automation and reduce turnaround time.
 
-Certificate issuance time
-Before: 1 business day
-After: 10 minutes
+| Metric | Before | After |
+|---|---:|---:|
+| Automated certificate generation | 20% | 85% |
+| Manual processing | 80% | 15% |
+| Certificate issuance time | 1 business day | 10 minutes |
 
-The analytical workflow included the following activities.
+## Analysis & Solution Design
 
-1. Stakeholder analysis and requirements elicitation
+1. **Stakeholder Analysis & Requirements Elicitation**  
+   Analyzed user needs across students, the Student Secretariat, and University Administration through interviews, workshops, and discovery sessions.
 
-Analyzed user needs across students, the Student Secretariat, and University Administration through interviews, workshops, and discovery sessions.
+2. **Business Process Analysis**  
+   Modeled AS-IS workflows, identified improvement opportunities, and designed TO-BE processes using BPMN/EPC.
 
-2. Business process analysis
+3. **Requirements Engineering**  
+   Specified functional and non-functional requirements for frontend and backend behavior, including business rules, data validation, status transitions, error handling, user stories, use cases, and acceptance criteria.
 
-Modeled current state workflows, identified improvement opportunities, and designed target state processes using BPMN and EPC.
+4. **Systems & Data Design**  
+   Defined REST API contracts, request and response structures, integration logic, and data entities and relationships.
 
-3. Requirements engineering
+5. **Testing & Acceptance**  
+   Prepared functional, integration, regression, negative, and edge-case test scenarios to validate system behavior against requirements.
 
-Specified functional and non functional requirements for frontend and backend behavior, including business rules, data validation, status transitions, error handling, user stories, use cases, and acceptance criteria.
+## Key Deliverables
 
-4. Systems and data design
+### Business Analysis
+- [Business Context & Problem Statement](01-business-context-and-problem.md)
+- [AS-IS Process](02-as-is-process.md)
+- [Root-Cause Analysis](03-root-cause-hypotheses.md)
+- [TO-BE Process](04-to-be-process.md)
+- [Business Rules & Template Coverage](05-template-coverage-and-business-rules.md)
 
-Defined REST API contracts, request and response structures, integration logic, and data entities and relationships.
+### Requirements & System Design
+- [Requirements & Acceptance Criteria](06-requirements-and-acceptance-criteria.md)
+- [REST API Contract — OpenAPI](07-proposed-api-contract.yaml)
+- [Data Model](08-proposed-data-model.md)
 
-5. Testing and acceptance
+### Testing & Performance
+- [Test Scenarios](09-test-scenarios.md)
+- [Outcomes & Measurement](10-outcomes-and-measurement.md)
+- [Evidence & Project Documentation](11-evidence-and-reconstruction-notes.md)
 
-Prepared functional, integration, regression, negative, and edge case test scenarios to validate system behavior against requirements.
+## Core Competencies
 
-The repository contains the following deliverables.
+- **Business Analysis:** stakeholder analysis, requirements elicitation, process optimization, business rules.
+- **Requirements Engineering:** FR/NFR, user stories, use cases, acceptance criteria.
+- **Systems Analysis:** REST API, OpenAPI/Swagger, JSON, integration logic, error handling.
+- **Data Modeling:** ERD, SQL, PostgreSQL, data validation.
+- **Quality Assurance:** functional, integration, regression, negative, and edge-case testing.
 
-Business analysis
+## Performance Measurement
 
-1. [Business Context and Problem Statement](01-business-context-and-problem.md)
-2. [Current State Process](02-as-is-process.md)
-3. [Root Cause Analysis](03-root-cause-hypotheses.md)
-4. [Target State Process](04-to-be-process.md)
-5. [Business Rules and Template Coverage](05-template-coverage-and-business-rules.md)
-
-Requirements and system design
-
-1. [Requirements and Acceptance Criteria](06-requirements-and-acceptance-criteria.md)
-2. [REST API Contract using OpenAPI](07-proposed-api-contract.yaml)
-3. [Data Model](08-proposed-data-model.md)
-
-Testing and performance
-
-1. [Test Scenarios](09-test-scenarios.md)
-2. [Outcomes and Measurement](10-outcomes-and-measurement.md)
-3. [Project Documentation and Evidence](11-evidence-and-reconstruction-notes.md)
-
-The work demonstrates stakeholder analysis, requirements elicitation, process optimization, business rules definition, functional and non functional requirements specification, user stories, use cases, acceptance criteria, REST API design, OpenAPI, Swagger, JSON, ERD, SQL, PostgreSQL, data validation, and functional, integration, regression, negative, and edge case testing.
-
-The key performance indicators are the automated generation rate, manual processing rate, and certificate issuance time. Comparing these metrics before and after the improvement provides a basis for evaluating process performance.
+The key indicators are automated-generation rate, manual-processing rate, and certificate-issuance time. Comparing these metrics before and after the improvement provides a basis for evaluating process performance.
