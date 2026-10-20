@@ -1,0 +1,146 @@
+openapi: 3.1.0
+info:
+  title: Digital Certificates API — Portfolio Proposal
+  version: 1.0.0
+  description: >-
+    Illustrative API contract created for this portfolio case. It is not the
+    original or verified API specification of GOMP / smart_edu or Be Smart.
+servers:
+  - url: https://api.example.invalid
+    description: Placeholder server; replace for a real implementation
+paths:
+  /api/v1/certificate-requests:
+    post:
+      summary: Submit a certificate request
+      operationId: createCertificateRequest
+      description: >-
+        Creates a request and determines whether the selected certificate type
+        can follow the automated route based on active template coverage.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCertificateRequest'
+            example:
+              certificateTypeId: CERT_TYPE_EXAMPLE
+      responses:
+        '202':
+          description: Request accepted for processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateRequest'
+              example:
+                requestId: req_12345
+                certificateTypeId: CERT_TYPE_EXAMPLE
+                status: QUEUED_FOR_GENERATION
+                processingRoute: AUTOMATED
+                manualRoutingReason: null
+                createdAt: '2026-10-21T09:30:00Z'
+        '400':
+          description: Invalid request body or certificate type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: Authentication is required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /api/v1/certificate-requests/{requestId}:
+    get:
+      summary: Get certificate request status
+      operationId: getCertificateRequest
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Current request information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateRequest'
+        '401':
+          description: Authentication is required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Request not found or not accessible to the caller
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+components:
+  schemas:
+    CreateCertificateRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - certificateTypeId
+      properties:
+        certificateTypeId:
+          type: string
+          minLength: 1
+          description: Identifier of an enabled certificate type.
+    CertificateRequest:
+      type: object
+      required:
+        - requestId
+        - certificateTypeId
+        - status
+        - processingRoute
+        - createdAt
+      properties:
+        requestId:
+          type: string
+        certificateTypeId:
+          type: string
+        status:
+          type: string
+          enum:
+            - SUBMITTED
+            - QUEUED_FOR_GENERATION
+            - MANUAL_REVIEW_REQUIRED
+            - GENERATING
+            - ISSUED
+            - REJECTED
+            - FAILED
+        processingRoute:
+          type: string
+          enum:
+            - AUTOMATED
+            - MANUAL
+        manualRoutingReason:
+          type: [string, 'null']
+          enum:
+            - NO_ACTIVE_TEMPLATE
+            - AMBIGUOUS_TEMPLATE_MAPPING
+            - null
+        documentUrl:
+          type: [string, 'null']
+          format: uri
+          description: Present only when a document is issued and caller is authorized.
+        createdAt:
+          type: string
+          format: date-time
+    ApiError:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        correlationId:
+          type: [string, 'null']
