@@ -1,74 +1,73 @@
-# Digital Certificates — Business Context & Problem Statement
+# Business Context and Problem Statement
 
-Project:** Digital Student Services  
-**Company:** Be Smart S.r.l.  
-**Platform:** GOMP / smart_edu  
-**Role represented:** Business / Systems Analyst  
-**Document status:** Portfolio case study
+## 1. Business Context
 
-## 1. Business context
+Be Smart S.r.l. provides digital solutions for universities, including the GOMP / smart_edu platform, which supports the digitization of academic and administrative processes.
 
-Digital Certificates was one functional area within a university digitalization initiative on the GOMP / smart_edu platform. The initiative included improvements to the certificate-issuance process, with reported objectives of increasing automation and reducing processing time and manual effort.
+The Digital Certificates service enables university certificate issuance through a digital workflow. The process involves students requesting certificates and university staff handling the associated processing activities.
 
-The available project summary identifies certificate generation, automated data validation, and certificate lifecycle handling as relevant areas of work.
+The business objective was to streamline certificate generation, reduce manual intervention, improve processing efficiency, and make certificate issuance faster and more reliable.
 
-## 2. Problem statement
+## 2. Current Situation
 
-The available project summary describes a partially automated certificate-issuance process. At baseline, automated generation was reported at 20%, manual processing at 80%, and certificate issuance time at one business day.
+Before the improvement, certificate issuance relied heavily on manual processing.
 
-For this portfolio case, the working scenario assumes that automated generation was available for selected certificate types, while certificate types without an applicable automated template required manual processing. This scenario provides a coherent basis for demonstrating process analysis and system specification, but it is not a verified statement about the original production workflow.
+The baseline indicators were:
 
-**Problem to analyze:** How can the certificate-issuance process increase automation coverage across certificate types while retaining a controlled manual route for types that cannot be generated automatically?
+Automated certificate generation: 20%
 
-## 3. Business objectives
+Manual processing: 80%
 
-1. Increase the proportion of requests handled through automated certificate generation.
-2. Reduce manual document-preparation effort.
-3. Reduce certificate-issuance turnaround time.
-4. Make the processing route explicit and traceable for each request.
-5. Preserve a controlled route for certificate types that are not supported by an active automated template.
+Certificate issuance time: 1 business day
 
-Objectives 1–3 align with the reported project outcomes. Objective 4–5 are proposed design objectives for this portfolio reconstruction.
+These figures indicate that automation covered only a limited proportion of certificate generation, while most processing remained manual.
 
-## 4. Baseline indicators
+## 3. Business Problem
 
-| Indicator | Reported baseline |
-|---|---:|
-| Automated generation | 20% |
-| Manual processing | 80% |
-| Certificate issuance time | 1 business day |
+The existing certificate issuance process had three key performance challenges.
 
-The source summary does not specify the measurement period, sample size, inclusion criteria, or exact operational definition of each metric. See [Outcomes and measurement considerations](10-outcomes-and-measurement.md).
+First, the low automation rate limited the efficiency of the service and left a substantial share of requests dependent on manual work.
 
-## 5. Scope
+Second, manual processing increased the operational effort required from university staff to handle certificate requests.
 
-### In scope
+Third, the time required to issue a certificate could reach one business day, limiting the speed of service delivery to students.
 
-- Certificate request intake at a high level
-- Classification of certificate types
-- Matching certificate types to automated templates
-- Routing a request to automated or manual processing
-- Generating and making a certificate available
-- Business rules, functional requirements, API design, conceptual data model, and test scenarios for the proposed workflow
+The central business problem was therefore the limited level of automation and the time and effort required to issue university certificates.
 
-### Out of scope
+## 4. Business Impact
 
-- Reconstructing the exact original production architecture
-- Claiming actual certificate types, APIs, database tables, or status names not supported by the available materials
-- Other Digital Student Services modules, including administrative procedures, document storage, and online application submission
-- Legal or regulatory requirements not documented in the available project materials
+The process affected two main stakeholder groups.
 
-## 6. Stakeholders in the proposed model
+Students depended on timely certificate issuance to obtain the documents they needed.
 
-The following are modeled stakeholders for the portfolio scenario, not a confirmed original stakeholder list:
+The Student Secretariat handled administrative activities associated with certificate processing, including work that could potentially be automated.
 
-| Stakeholder | Proposed interest |
-|---|---|
-| Student | Submit a certificate request and obtain the document |
-| Student Secretariat / university staff | Handle requests that cannot follow the automated route |
-| University administration | Define supported certificate types and operational rules |
-| Platform / development team | Implement routing, template mapping, document generation, and status handling |
+A process with a high proportion of manual operations created an opportunity to improve service speed while reducing routine administrative workload.
 
-## 7. Key analytical question
+## 5. Business Objectives
 
-What rules determine whether a requested certificate type can be generated automatically, and what should happen when no active template supports that type?
+The improvement initiative focused on the following objectives.
+
+1. Increase the proportion of certificates generated automatically.
+2. Reduce the share of requests requiring manual processing.
+3. Reduce certificate issuance time.
+4. Introduce clear processing rules and data validation.
+5. Improve consistency across certificate generation workflows.
+
+## 6. Scope
+
+The analysis focuses on the digital certificate issuance process within GOMP / smart_edu.
+
+The scope includes business process analysis, certificate generation, automated PDF generation, data validation, business rules, system requirements, API interactions, data structures, and functional testing.
+
+The broader Digital Student Services initiative also included administrative procedures, document storage, and online application submission. These processes are outside the primary focus of this document.
+
+## 7. Success Criteria
+
+The primary indicators for evaluating process performance are:
+
+1. Automated certificate generation rate.
+2. Manual processing rate.
+3. Certificate issuance time.
+
+The baseline values establish the starting point for comparison. The measurement approach and reported results are documented separately.
