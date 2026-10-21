@@ -13,7 +13,7 @@ The process aims to ensure that students receive the required certificates while
 
 <!-- Insert the exported BPMN diagram below. Save the image in the repository root as as-is-process.svg. -->
 
-![AS-IS BPMN Diagram](./AS IS — Manual Certificate Issuance.svg)
+![AS-IS Manual Certificate Issuance](<./AS IS — Manual Certificate Issuance.svg>)
 
 ## 3. Process steps
 
