@@ -1,61 +1,40 @@
 # Digital Certificates — AS-IS Process
 
-**Model status:** Reconstructed hypothesis for portfolio use  
-**Purpose:** Illustrate one plausible processing model consistent with the selected scenario.
+## 1. Current-state process
 
-## 1. Current-state hypothesis
+The certificate issuance process follows two routes depending on whether the requested certificate type is supported by an automated template.
 
-The working hypothesis is that certificate requests followed one of two routes depending on whether the requested certificate type was supported by an automated template:
+- **Automated route:** The platform identifies a matching template and generates the certificate automatically.
+- **Manual route:** When an applicable automated template is unavailable, university staff prepare and process the certificate manually.
 
-- **Automated route:** an available template can be matched to the requested type, allowing the document to be generated automatically.
-- **Manual route:** no applicable automated template is available, so the request requires employee handling.
+The process aims to ensure that students receive the required certificates while accounting for differences in template availability and processing requirements.
 
-This decision rule is assumed for this portfolio case. The exact original routing logic has not been verified.
+## 2. AS-IS BPMN Diagram
 
-## 2. High-level process diagram
+<!-- Insert the exported BPMN diagram below. Save the image in the repository root as as-is-process.svg. -->
 
-```mermaid
-flowchart TD
-    A([Student needs a certificate]) --> B[Select certificate type]
-    B --> C[System identifies requested type]
-    C --> D{Applicable automated template available?}
-    D -- Yes --> E[Generate certificate using template]
-    E --> F[Make certificate available to student]
-    D -- No --> G[Route request to manual processing]
-    G --> H[Employee prepares certificate]
-    H --> F
-    F --> I([Request completed])
-```
+![AS-IS BPMN Diagram](./AS IS — Manual Certificate Issuance.svg)
 
-The diagram is a high-level process-flow illustration. It is not represented as a verified BPMN model of the original GOMP workflow.
-
-## 3. Process steps in the reconstructed scenario
+## 3. Process steps
 
 | Step | Actor / system | Activity | Expected output |
 |---|---|---|---|
 | 1 | Student | Selects the required certificate type | Request details |
-| 2 | Platform | Identifies the requested type and checks template coverage | Routing decision |
-| 3A | Platform | Uses a matching automated template | Generated certificate file |
-| 3B | University staff | Handles the request manually when an applicable template is unavailable | Prepared certificate file |
-| 4 | Platform / staff | Makes the completed certificate available to the student | Issued certificate |
+| 2 | Platform | Identifies the requested certificate type and checks template availability | Processing route determined |
+| 3A | Platform | Generates the certificate using the matching automated template | Generated certificate file |
+| 3B | University staff | Prepares and processes the certificate manually when no applicable template is available | Prepared certificate file |
+| 4 | Platform / university staff | Makes the completed certificate available to the student | Issued certificate |
 
-The sequence and actors above are proposed for the case study and may differ from the original implementation.
+## 4. Key process pain points
 
-## 4. Potential pain points under this hypothesis
+- Certificate types without automated-template coverage require manual processing.
+- Manual preparation increases the workload of university staff.
+- Template availability determines the processing route for a certificate request.
+- Different processing routes can result in different certificate issuance times.
+- Limited automation creates opportunities to standardize document generation and reduce repetitive administrative work.
 
-- Certificate types outside automated-template coverage require manual handling.
-- Employees spend time preparing documents that could potentially be standardized.
-- The processing route depends on whether a suitable template exists.
-- Different processing routes may lead to different turnaround times.
+## 5. Business impact
 
-These are potential implications of the assumed process, not independently confirmed historical findings.
+The process combines automated certificate generation with manual handling for requests that cannot be processed automatically. Expanding automated-template coverage can reduce manual intervention, improve process consistency, shorten issuance times, and free university staff to focus on requests requiring individual attention.
 
-## 5. What an implementation-ready AS-IS model would require
-
-Before this model could be treated as a validated current-state diagram, the analyst would confirm:
-
-- The actual certificate types in scope
-- The original routing decision and its rules
-- The exact activities performed by the platform and by staff
-- Handoffs, statuses, exceptions, and completion conditions
-- Whether the manual route is triggered only by missing templates or by other conditions as well
+The AS-IS analysis provides the basis for identifying automation opportunities, defining business rules, and designing the TO-BE certificate issuance process.
