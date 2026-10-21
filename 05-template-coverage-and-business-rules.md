@@ -1,50 +1,79 @@
-# Digital Certificates — Template Coverage & Business Rules
+# Digital Certificates — Template Coverage and Business Rules
 
-**Status:** Proposed specification for the reconstructed portfolio scenario
+## 1. Purpose
 
-## 1. Template coverage model
+This document defines the business rules that govern automated certificate generation and request processing.
 
-The actual certificate names and template catalogue are not available in the source materials. To avoid inventing production details, the table below uses generic illustrative categories only.
+It answers three key questions:
 
-| Illustrative category | Template mapping | Proposed processing route | Notes |
-|---|---|---|---|
-| Supported certificate type | One active approved template exists | Automated | Demonstrates the automated route; not an actual certificate name |
-| Unsupported certificate type | No active approved template exists | Manual | Demonstrates the manual route; not an actual certificate name |
-| Type with conflicting or ambiguous mappings | More than one eligible template is found | Exception / manual review | Proposed safeguard to prevent arbitrary template selection |
+1. **How does the system select a certificate template?**
+2. **What rules must be followed before a certificate can be generated?**
+3. **When can a certificate request be considered completed?**
 
-For implementation, these rows would be replaced by a validated catalogue of actual certificate types and business-approved template mappings.
+These rules determine how the Backend processes requests, selects templates, coordinates document generation, and confirms successful certificate issuance.
 
-## 2. Proposed business rules
+## 2. Template Selection
 
-| ID | Rule | Rationale |
+The Backend selects a template based on the certificate type specified in the student's request.
+
+| Condition | System Behaviour | Processing Route |
 |---|---|---|
-| BR-01 | Every certificate request must reference a valid certificate type | Enables deterministic routing |
-| BR-02 | Automated generation is permitted only when exactly one active, approved template is mapped to the requested type | Prevents generation from an unsupported or ambiguous template |
-| BR-03 | If no eligible template is mapped to the requested type, the request must be routed to manual processing | Ensures unsupported requests have an explicit path |
-| BR-04 | If more than one eligible template matches a request, the system must not select one arbitrarily; it must raise an exception for resolution | Avoids unpredictable output |
-| BR-05 | Each template must declare the required data fields used to populate the document | Makes field requirements testable |
-| BR-06 | A certificate must not be marked as generated unless document generation succeeds | Prevents false completion states |
-| BR-07 | The processing route, final status, and template version used (if any) must be traceable | Supports troubleshooting and auditability |
-| BR-08 | A manual-processing request must retain a reason for manual routing | Enables reporting and prioritization of future automation |
+| Exactly one active template matches the requested certificate type | Retrieve the template and continue automatic generation | Automated |
+| No active template matches the requested certificate type | Route the request to the Student Secretariat | Manual processing |
+| Multiple active templates match the requested certificate type | Stop automatic selection and route the request for review | Manual review |
 
-These are proposed business rules for the portfolio design; they are not claimed to be historical rules from Be Smart.
+Only active, approved templates can be used for automatic certificate generation. If the system cannot identify exactly one eligible template, automatic generation must not proceed.
 
-## 3. Proposed request statuses
+## 3. Business Rules
+
+| ID | Rule | Expected Behaviour |
+|---|---|---|
+| BR-01 | Certificate Type | Every request must specify a supported certificate type. |
+| BR-02 | Request Validation | The Backend must validate required fields and data formats before processing continues. |
+| BR-03 | Template Selection | The Backend determines the appropriate template using the requested certificate type. |
+| BR-04 | Template Eligibility | Only active, approved templates are eligible for automatic generation. |
+| BR-05 | Unique Template Match | Automatic generation proceeds only when exactly one eligible template matches. |
+| BR-06 | Required Student Data | The Backend must obtain all required student data before requesting PDF generation. |
+| BR-07 | Successful Generation | The generated PDF must be returned successfully before the Backend proceeds to storage. |
+| BR-08 | Successful Storage | The Backend must receive a document reference from Document Storage before completing the request. |
+| BR-09 | Request Completion | A request can be marked `COMPLETED` only after the certificate has been generated, stored, and made available to the student. |
+| BR-10 | Processing Traceability | The system records the request status, processing route, and template identifier and version used. |
+| BR-11 | Manual Routing Reason | Requests sent for manual processing or review must retain the reason for that decision. |
+
+## 4. Template Lifecycle
+
+Templates follow a controlled lifecycle to ensure that only approved templates are used for certificate generation.
 
 | Status | Meaning |
 |---|---|
-| `SUBMITTED` | The request has been received |
-| `QUEUED_FOR_GENERATION` | The request is eligible for the automated route and awaits processing |
-| `MANUAL_REVIEW_REQUIRED` | The request cannot proceed through the automated route and needs human handling |
-| `GENERATING` | Document generation is in progress |
-| `ISSUED` | The certificate has been generated and made available |
-| `REJECTED` | The request was rejected under a defined business rule |
-| `FAILED` | A technical failure prevented processing |
+| `DRAFT` | The template is being created or edited. |
+| `IN_REVIEW` | The template is awaiting approval. |
+| `APPROVED` | The template has passed the approval process but is not yet active. |
+| `ACTIVE` | The approved template is available for certificate generation. |
+| `RETIRED` | The template is no longer available for new requests. |
 
-This is a proposed status model. Whether all statuses are required depends on implementation and operational needs.
+A template must be approved before it can become active. Each template has an identifier and version, allowing the system to identify which version was used to generate a certificate.
 
-## 4. Template lifecycle proposal
+## 5. Request Completion
 
-A basic controlled lifecycle could use `DRAFT`, `APPROVED`, `ACTIVE`, and `RETIRED` states. Only an active, approved template should be eligible for automated generation. Template changes should be versioned so that a request can be traced to the template version used.
+The Backend manages the request status throughout the certificate issuance process.
 
-This lifecycle is a design proposal, not a description of the original system.
+| Status | Meaning |
+|---|---|
+| `SUBMITTED` | The request has been received. |
+| `PROCESSING` | The request is being processed. |
+| `MANUAL_REVIEW_REQUIRED` | The request requires intervention by the Student Secretariat. |
+| `COMPLETED` | The certificate has been generated, stored, and made available to the student. |
+| `FAILED` | Processing could not be completed because of an error. |
+
+The Backend is responsible for updating the request status. The PDF Generator reports the result of document generation, while Document Storage performs file retrieval and storage operations.
+
+A request must not be marked `COMPLETED` before the certificate is stored and made available to the student.
+
+## 6. Relationship to the TO-BE Process
+
+The TO-BE process in `04-to-be-process.md` shows the successful automated route when the request is valid and a suitable active template is available.
+
+This document defines the rules governing that process, including template selection, required data, document storage, and request completion. It also specifies how requests are routed when an eligible template cannot be identified.
+
+The implementation of these rules is detailed in `06-requirements-and-acceptance-criteria.md`.
