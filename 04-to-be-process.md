@@ -10,9 +10,9 @@ The process covers the automated issuance of a certificate when a suitable templ
 
 ## 2. TO-BE BPMN Diagram
 
-![TO-BE Digital Certificate Issuance Process](<./Digital Certificate Issuance — TO-BE_with_overlays (2).svg>)
+![TO-BE Digital Certificate Issuance Process](<./Digital Certificate Issuance — TO-BE_cropped.svg>)
 
-[Open the TO-BE BPMN diagram (SVG)](<./Digital Certificate Issuance — TO-BE_with_overlays (2).svg>)
+[Open the TO-BE BPMN diagram (SVG)](<./Digital Certificate Issuance — TO-BE_cropped.svg>)
 
 The diagram illustrates the interaction between the student and the system components, from submitting a certificate request to downloading the completed PDF document.
 
