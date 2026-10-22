@@ -126,7 +126,7 @@ Detailed implementation of retry mechanisms, background workers, and recovery fr
 |---|---|
 | `01-business-context-and-problem.md` | Defines the business problem and expected outcomes. |
 | `02-as-is-process.md` | Describes the current certificate issuance process. |
-| `03-root-cause-analysis.md` | Identifies the causes of manual processing and extended issuance time. |
+| `03-root-cause-hypotheses.md` | Identifies the causes of manual processing and extended issuance time. |
 | `04-to-be-process.md` | Defines the target process and component interactions. |
 | `05-template-coverage-and-business-rules.md` | Defines template selection, processing routes, and completion rules. |
 | `07-proposed-api-contract.yaml` | Specifies the API contract supporting request processing. |
