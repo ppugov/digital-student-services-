@@ -31,6 +31,8 @@ Each test scenario defines the preconditions, test action, and expected result.
 | TC-13 | Document storage failure                         | Generated PDF cannot be stored successfully                                          | Request is not marked `COMPLETED`; the certificate is not made available for download                      | Negative     |
 | TC-14 | Verify template traceability                     | Automated certificate generation completes successfully                              | The request and issued document can be traced to the template identifier and version used                  | Traceability |
 | TC-15 | Complete manual processing                       | Request is awaiting manual processing; Secretariat completes the required activities | Generated document is stored, made available to the student, and the request status becomes `COMPLETED`    | Positive     |
+| TC-16 | Automated issuance within target time           | Valid request follows the automated route; request and availability timestamps are captured | Certificate is available within 10 minutes of submission; elapsed time is recorded | Performance |
+| TC-17 | Verify template mapping maintainability         | Authorized configuration mechanism is available; certificate type and template exist | Template mapping can be maintained without changing request-processing logic | Maintainability |
 
 ## 3. API Test Coverage
 
@@ -43,7 +45,7 @@ The API endpoints are validated against the expected request and response contra
 | `GET /api/v1/certificate-requests/{requestId}`          | TC-08, TC-11                      | Returns request information only to authorized callers                 |
 | `GET /api/v1/certificate-requests/{requestId}/document` | TC-09, TC-10, TC-11               | Returns the PDF only when it is available and the caller is authorized |
 
-TC-05, TC-12, TC-13, TC-14, and TC-15 cover the processing and integration behaviour across the Backend, PDF Generator, Document Storage, and Student Secretariat.
+TC-05, TC-12, TC-13, TC-14, and TC-15 cover processing and integration behaviour across the Backend, PDF Generator, Document Storage, and Student Secretariat. TC-16 verifies the issuance-time target, and TC-17 verifies template-mapping maintainability.
 
 ## 4. Requirements Traceability
 
@@ -62,7 +64,8 @@ TC-05, TC-12, TC-13, TC-14, and TC-15 cover the processing and integration behav
 | NFR-03 — Reliability                                          | TC-12, TC-13           |
 | NFR-04 — Traceability                                         | TC-14                  |
 | NFR-05 — Usability                                            | TC-03, TC-04, TC-08    |
-| NFR-07 — Performance                                          | TC-05                  |
+| NFR-06 — Maintainability                                      | TC-17                  |
+| NFR-07 — Performance                                          | TC-16                  |
 
 ## 5. Test Data
 
