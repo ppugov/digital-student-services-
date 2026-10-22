@@ -12,7 +12,7 @@ It provides a single reference for the decisions made throughout the certificate
 |---|---|---|
 | Business Analysis | `01-business-context-and-problem.md` | Defines the business context, problem, objectives, and performance indicators |
 | Current-State Analysis | `02-as-is-process.md` | Documents the existing certificate issuance workflow |
-| Root Cause Analysis | `03-root-cause-analysis.md` | Identifies the factors contributing to manual processing and extended issuance time |
+| Root Cause Analysis | `03-root-cause-hypotheses.md` | Identifies the factors contributing to manual processing and extended issuance time |
 | Target Process | `04-to-be-process.md` and BPMN diagram | Defines the target workflow and interactions between system components |
 | Business Rules | `05-template-coverage-and-business-rules.md` | Defines template selection, processing routes, and completion conditions |
 | Requirements Engineering | `06-requirements-and-acceptance-criteria.md` | Specifies functional requirements, non-functional requirements, and acceptance criteria |
