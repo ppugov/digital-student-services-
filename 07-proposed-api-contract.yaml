@@ -82,7 +82,7 @@ paths:
                 certificateTypeId: ENROLLMENT
                 status: MANUAL_REVIEW_REQUIRED
                 processingRoute: MANUAL
-                manualRoutingReason: NO_ACTIVE_TEMPLATE
+                manualRoutingReason: NO_ELIGIBLE_TEMPLATE
                 createdAt: '2026-10-22T08:30:00Z'
 
         '400':
@@ -301,7 +301,7 @@ components:
         manualRoutingReason:
           type: string
           enum:
-            - NO_ACTIVE_TEMPLATE
+            - NO_ELIGIBLE_TEMPLATE
             - AMBIGUOUS_TEMPLATE_MAPPING
 
         createdAt:
