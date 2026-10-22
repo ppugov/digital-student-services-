@@ -57,7 +57,7 @@ The certificate-issuance process involved substantial manual processing, creatin
 ## Core Competencies
 
 - **Business Analysis:** stakeholder analysis, requirements elicitation, process optimization, business rules.
-- **Requirements Engineering:** FR/NFR, user stories, use cases, acceptance criteria.
+- **Requirements Engineering:** FR/NFR, user stories, acceptance criteria.
 - **Systems Analysis:** REST API, OpenAPI/Swagger, JSON, integration logic, error handling.
 - **Data Modeling:** ERD, SQL, PostgreSQL, data validation.
 - **Quality Assurance:** functional, integration, negative, security, performance, and edge-case testing.
