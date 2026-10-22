@@ -1,104 +1,83 @@
-# Digital Certificates — Outcomes and Measurement
+# Digital Certificates — Evidence and Project Documentation
 
 ## 1. Purpose
 
-This document evaluates the business outcomes of the digital certificate issuance process and defines how its performance is measured.
+This document organizes the key project artefacts and links business objectives to process analysis, system design, testing, and performance measurement.
 
-It answers three key questions:
+It provides a single reference for the decisions made throughout the certificate issuance improvement process and the documentation supporting those decisions.
 
-1. How much has the level of automation increased?
-2. How much have manual processing and certificate issuance time decreased?
-3. Which KPIs are used to evaluate process performance?
+## 2. Key Project Evidence
 
-## 2. Business Outcomes
+| Area | Evidence / Deliverable | Purpose |
+|---|---|---|
+| Business Analysis | `01-business-context-and-problem.md` | Defines the business context, problem, objectives, and performance indicators |
+| Current-State Analysis | `02-as-is-process.md` | Documents the existing certificate issuance workflow |
+| Root Cause Analysis | `03-root-cause-analysis.md` | Identifies the factors contributing to manual processing and extended issuance time |
+| Target Process | `04-to-be-process.md` and BPMN diagram | Defines the target workflow and interactions between system components |
+| Business Rules | `05-template-coverage-and-business-rules.md` | Defines template selection, processing routes, and completion conditions |
+| Requirements Engineering | `06-requirements-and-acceptance-criteria.md` | Specifies functional requirements, non-functional requirements, and acceptance criteria |
+| API Design | `07-proposed-api-contract.yaml` | Defines API endpoints, request and response schemas, and HTTP responses |
+| Data Modeling | `08-proposed-data-model.md` and ER diagram | Defines the data entities, attributes, keys, and relationships |
+| Quality Assurance | `09-test-scenarios.md` | Defines test scenarios for functional behaviour, routing, access control, and document generation |
+| Performance Measurement | `10-outcomes-and-measurement.md` | Defines business KPIs, calculation methods, and performance targets |
 
-The process improvement focuses on three primary indicators: automated certificate generation, manual processing, and certificate issuance time.
+## 3. Business Problem to Solution Traceability
 
-| KPI | Before | After | Change |
+The following table connects the main business challenges to the analysis, solution design, and validation activities.
+
+| Business Challenge | Analysis | Solution Decision | Validation |
+|---|---|---|---|
+| Low automated-generation rate | Review automation coverage and manual processing | Expand automated generation for supported certificate types | TC-02, TC-05, TC-06 |
+| High manual-processing rate | Identify requests that require employee intervention | Define automated and manual processing routes | TC-06, TC-07, TC-15 |
+| Extended certificate issuance time | Measure request-to-issuance turnaround time | Reduce manual document preparation through automated PDF generation | TC-05 and KPI measurement |
+| Invalid request data | Define request validation rules | Validate required fields before processing | TC-03, TC-04 |
+| Incorrect or ambiguous template selection | Define template mapping and eligibility rules | Require exactly one eligible template for automated generation | TC-02, TC-07 |
+| Incomplete certificate issuance | Define document storage and completion conditions | Mark a request as completed only after successful generation, storage, and availability | TC-05, TC-09, TC-13 |
+
+## 4. Performance Evidence
+
+The project uses three primary performance indicators to evaluate certificate issuance.
+
+| KPI | Baseline | Result / Target | Absolute Change |
 |---|---:|---:|---:|
 | Automated certificate generation | 20% | 85% | +65 percentage points |
 | Manual certificate processing | 80% | 15% | -65 percentage points |
-| Certificate issuance time | 1 business day | 10 minutes | Substantially reduced |
+| Certificate issuance time | 1 business day | 10 minutes | Reduced to 10 minutes |
 
-The automation rate increased by 65 percentage points, while the share of requests requiring manual processing decreased by the same amount.
+The automation and manual-processing rates are complementary indicators: increasing the automated share reduces the proportion of requests handled manually.
 
-The target operating model prioritizes automated certificate generation for supported certificate types while retaining manual processing for requests that require individual handling.
+Issuance time measures the elapsed period between request submission and certificate availability. Consistent definitions and measurement periods are required when comparing results.
 
-## 3. KPI Definitions
+## 5. Data Required for Performance Measurement
 
-### 3.1. Automated Generation Rate
+To calculate and reproduce the KPIs, the measurement process uses the following information:
 
-Measures the proportion of completed certificate requests processed through the automated route.
+| Data Point | Purpose |
+|---|---|
+| Request ID | Identify each certificate request |
+| Request creation timestamp | Establish the beginning of the measurement period |
+| Processing route | Distinguish automated and manual requests |
+| Request status | Identify successfully completed requests |
+| Certificate availability timestamp | Establish the end of the issuance-time measurement |
+| Template ID and version | Trace the template used for automated generation |
+| Generation outcome | Identify successful and failed generation attempts |
 
-**Formula:**
+These data points support calculation of automation rate, manual-processing rate, issuance turnaround time, and generation failure rate.
 
-`Automated Generation Rate = (Automatically Generated Certificates / Total Completed Requests) × 100`
+## 6. Document Relationships
 
-A higher rate indicates that more certificate requests are completed without manual document preparation.
+The project documentation follows a connected analysis and design sequence:
 
-### 3.2. Manual Processing Rate
+1. **Business context and current state:** Documents 01–03 define the business problem, existing workflow, and causes of inefficiency.
+2. **Target process and rules:** Documents 04–05 define the intended workflow and the rules governing certificate generation.
+3. **System design:** Documents 06–08 translate the target process into requirements, API contracts, and a data model.
+4. **Verification:** Document 09 defines test scenarios linked to requirements and expected system behaviour.
+5. **Business outcomes:** Document 10 defines the KPIs and measurement approach used to evaluate process performance.
 
-Measures the proportion of completed certificate requests that require staff involvement in processing or document preparation.
-
-**Formula:**
-
-`Manual Processing Rate = (Manually Processed Requests / Total Completed Requests) × 100`
-
-A lower rate indicates reduced dependence on manual administrative work.
-
-### 3.3. Certificate Issuance Time
-
-Measures the time between certificate request submission and the point at which the completed document becomes available to the student.
-
-**Formula:**
-
-`Issuance Time = Certificate Availability Timestamp − Request Submission Timestamp`
-
-The measurement uses the request creation timestamp and the timestamp when the certificate becomes available. This provides a consistent measure of end-to-end processing time.
-
-## 4. Measurement Method
-
-I use the following approach to evaluate process performance:
-
-1. **Establish the baseline.** Record the automation rate, manual processing rate, and issuance time before the process improvement.
-2. **Track request processing.** Record the request identifier, processing route, status transitions, and relevant timestamps.
-3. **Measure the same KPIs after the improvement.** Apply the same definitions and calculation methods to the updated process.
-4. **Compare the results.** Calculate absolute percentage-point changes for the processing rates and compare issuance time before and after the change.
-5. **Review operational performance.** Examine results by certificate type and processing route to identify areas where manual handling remains necessary.
-
-The comparison uses the same scope of certificate types and consistent KPI definitions to ensure that changes in performance are interpreted correctly.
-
-## 5. Supporting Operational Indicators
-
-In addition to the primary KPIs, the following indicators support ongoing process monitoring.
-
-| Indicator | Calculation | Purpose |
-|---|---|---|
-| Template Coverage | Certificate types with an active, approved template / Total certificate types in scope × 100 | Measures how much of the certificate catalogue supports automated generation |
-| PDF Generation Failure Rate | Failed automated generation attempts / Total automated generation attempts × 100 | Identifies technical issues affecting document generation |
-| Manual Routing Rate | Requests routed to manual processing / Total submitted valid requests × 100 | Measures how frequently the automated route cannot be used |
-| Request Completion Rate | Completed requests / Total submitted valid requests × 100 | Measures the proportion of valid requests that reach completion |
-
-These indicators provide additional insight into why some requests require manual handling and where further process improvements can be made.
-
-## 6. Business Impact
-
-The improvement addresses three operational priorities:
-
-- **Reduced administrative workload:** A greater share of certificates can be generated without manual document preparation.
-- **Faster service delivery:** Students receive their certificates in less time.
-- **More consistent processing:** Standardized templates, validation rules, and request statuses make the workflow easier to manage and monitor.
-
-The combination of automated generation and a defined manual route allows the process to handle supported certificate types efficiently while preserving a path for requests that require staff intervention.
+This structure maintains traceability between business objectives, process decisions, system requirements, test coverage, and performance indicators.
 
 ## 7. Summary
 
-The key performance indicators show a shift from predominantly manual certificate processing to a process with a substantially higher level of automation.
+The project documentation provides an integrated view of the digital certificate issuance process, from business problem analysis to system design, validation, and KPI measurement.
 
-| Objective | Performance Indicator | Result |
-|---|---|---|
-| Increase automation | Automated generation rate | 20% → 85% |
-| Reduce manual effort | Manual processing rate | 80% → 15% |
-| Accelerate certificate delivery | Certificate issuance time | 1 business day → 10 minutes |
-
-These indicators connect the business objectives defined in `01-business-context-and-problem.md` with the process changes described in `04-to-be-process.md`. The requirements for system behaviour are documented in `06-requirements-and-acceptance-criteria.md`, while the test coverage is defined in `09-test-scenarios.md`.
+The artefacts can be reviewed together to understand the rationale behind the target process, how its behaviour is specified, how the design is validated, and how improvements in certificate issuance are evaluated.
