@@ -24,16 +24,16 @@ The certificate-issuance process involved substantial manual processing, creatin
    Analyzed user needs across students, the Student Secretariat, and University Administration through interviews, workshops, and discovery sessions.
 
 2. **Business Process Analysis**  
-   Modeled AS-IS workflows, identified improvement opportunities, and designed TO-BE processes using BPMN/EPC.
+   Modeled AS-IS workflows, identified improvement opportunities, and designed TO-BE processes using BPMN.
 
 3. **Requirements Engineering**  
-   Specified functional and non-functional requirements for frontend and backend behavior, including business rules, data validation, status transitions, error handling, user stories, use cases, and acceptance criteria.
+   Specified functional and non-functional requirements for frontend and backend behavior, including business rules, data validation, status transitions, error handling, user stories and acceptance criteria.
 
 4. **Systems & Data Design**  
    Defined REST API contracts, request and response structures, integration logic, and data entities and relationships.
 
 5. **Testing & Acceptance**  
-   Prepared functional, integration, regression, negative, and edge-case test scenarios to validate system behavior against requirements.
+   Prepared functional, integration, negative, security, performance, and edge-case test scenarios to validate system behavior against requirements.
 
 ## Key Deliverables
 
@@ -60,7 +60,7 @@ The certificate-issuance process involved substantial manual processing, creatin
 - **Requirements Engineering:** FR/NFR, user stories, use cases, acceptance criteria.
 - **Systems Analysis:** REST API, OpenAPI/Swagger, JSON, integration logic, error handling.
 - **Data Modeling:** ERD, SQL, PostgreSQL, data validation.
-- **Quality Assurance:** functional, integration, regression, negative, and edge-case testing.
+- **Quality Assurance:** functional, integration, negative, security, performance, and edge-case testing.
 
 ## Performance Measurement
 
