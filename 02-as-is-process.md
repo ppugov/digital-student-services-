@@ -25,7 +25,7 @@ The analysis covers the request journey, participant responsibilities, process c
 
 ## 3. Diagram A — Manual certificate issuance
 
-![AS-IS manual certificate issuance BPMN diagram](./assets/as-is-manual-certificate-issuance.svg)
+![AS-IS manual certificate issuance BPMN diagram](./AS IS — Manual Certificate Issuance.svg)
 
 **Source diagram:** `AS IS — Manual Certificate Issuance(1).svg`
 
@@ -52,7 +52,7 @@ The manual flow establishes a clear service sequence: request submission is foll
 
 ## 4. Diagram B — Automatic certificate issuance through GOMP / smart_edu
 
-![AS-IS automatic certificate issuance BPMN diagram](./assets/as-is-automatic-certificate-issuance-gomp.svg)
+![AS-IS automatic certificate issuance BPMN diagram](./AS IS — Automatic Certificate Issuance (GOMP _ smart_edu)_with_overlays.svg)
 
 **Source diagram:** `AS IS — Automatic Certificate Issuance (GOMP _ smart_edu)_with_overlays.svg`
 
@@ -203,9 +203,9 @@ The two BPMN diagrams provide the process structure for this analysis. The KPI b
 
 ## 12. Source diagrams
 
-- [Manual certificate issuance BPMN](./assets/as-is-manual-certificate-issuance.svg)
-- [Automatic certificate issuance through GOMP / smart_edu BPMN](./assets/as-is-automatic-certificate-issuance-gomp.svg)
+- [Manual certificate issuance BPMN](./AS IS — Manual Certificate Issuance.svg)
+- [Automatic certificate issuance through GOMP / smart_edu BPMN](./AS IS — Automatic Certificate Issuance (GOMP _ smart_edu)_with_overlays.svg)
 
 ---
 
-**Next artifact:** `03-to-be-process.md` — the TO-BE process design, translating these findings into target workflows, controls, and measurable outcomes.
+**Next artifact:** `04-to-be-process.md` — the TO-BE process design, translating these findings into target workflows, controls, and measurable outcomes.
