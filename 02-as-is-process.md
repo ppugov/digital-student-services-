@@ -25,7 +25,7 @@ The analysis covers the request journey, participant responsibilities, process c
 
 ## 3. Diagram A — Manual certificate issuance
 
-![AS-IS manual certificate issuance BPMN diagram](./AS IS — Manual Certificate Issuance.svg)
+![AS-IS manual certificate issuance BPMN diagram](<./AS IS — Manual Certificate Issuance.svg>)
 
 **Source diagram:** [AS IS — Manual Certificate Issuance.svg](<./AS IS — Manual Certificate Issuance.svg>)
 
@@ -52,9 +52,9 @@ The manual flow establishes a clear service sequence: request submission is foll
 
 ## 4. Diagram B — GOMP / smart_edu request flow with Secretariat fulfilment
 
-![AS-IS automatic certificate issuance BPMN diagram](./AS IS — Automatic Certificate Issuance (GOMP _ smart_edu)_with_overlays.svg)
+![GOMP / smart_edu certificate request flow with Secretariat fulfilment](./as-is-gomp-digital-request-flow.svg)
 
-**Source diagram:** [GOMP / smart_edu request-flow diagram](./as-is-gomp-digital-request-flow.svg)
+**Process diagram:** [GOMP / smart_edu request-flow diagram](./as-is-gomp-digital-request-flow.svg)
 
 ### 4.1 Participants and responsibilities
 
