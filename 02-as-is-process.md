@@ -203,8 +203,8 @@ The two BPMN diagrams provide the process structure for this analysis. The KPI b
 
 ## 12. Source diagrams
 
-- [Manual certificate issuance BPMN](./AS IS — Manual Certificate Issuance.svg)
-- [GOMP / smart_edu request flow with Secretariat fulfilment BPMN](./AS IS — Automatic Certificate Issuance (GOMP _ smart_edu)_with_overlays.svg)
+- [Manual certificate issuance BPMN](<./AS IS — Manual Certificate Issuance.svg>)
+- [GOMP / smart_edu request flow with Secretariat fulfilment BPMN](./as-is-gomp-digital-request-flow.svg)
 
 ---
 
