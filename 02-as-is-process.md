@@ -8,7 +8,7 @@
 This document describes the current-state (*AS-IS*) certificate-issuance process through two modeled variants:
 
 1. **Manual certificate issuance** — a student requests a certificate and the Student Secretariat performs the processing steps.
-2. **Automatic certificate issuance through GOMP / smart_edu** — the request is initiated in the application, passed through the GOMP Frontend and Backend, and then routed to the Student Secretariat when processing succeeds. The diagram also models an error path.
+2. **GOMP / smart_edu request flow with Secretariat fulfilment** — the request is initiated in the application, passed through the GOMP Frontend and Backend, and then routed to the Student Secretariat when processing succeeds. The diagram also models an error path.
 
 The analysis covers the request journey, participant responsibilities, process controls, exception handling, operational risks, baseline metrics, and implications for a future *TO-BE* design. The BPMN models define the current process structure; the supporting requirements specify business rules, data, integrations, and operational controls.
 
@@ -27,7 +27,7 @@ The analysis covers the request journey, participant responsibilities, process c
 
 ![AS-IS manual certificate issuance BPMN diagram](./AS IS — Manual Certificate Issuance.svg)
 
-**Source diagram:** `AS IS — Manual Certificate Issuance(1).svg`
+**Source diagram:** [AS IS — Manual Certificate Issuance.svg](<./AS IS — Manual Certificate Issuance.svg>)
 
 ### 3.1 Participants and responsibilities
 
@@ -50,11 +50,11 @@ The analysis covers the request journey, participant responsibilities, process c
 
 The manual flow establishes a clear service sequence: request submission is followed by Secretariat verification, preparation, generation, and delivery. The main operational focus is the work performed after the request reaches the Secretariat. This is the baseline for assessing hand-offs, workload, service time, rework, and opportunities to streamline fulfilment in the TO-BE process.
 
-## 4. Diagram B — Automatic certificate issuance through GOMP / smart_edu
+## 4. Diagram B — GOMP / smart_edu request flow with Secretariat fulfilment
 
 ![AS-IS automatic certificate issuance BPMN diagram](./AS IS — Automatic Certificate Issuance (GOMP _ smart_edu)_with_overlays.svg)
 
-**Source diagram:** `AS IS — Automatic Certificate Issuance (GOMP _ smart_edu)_with_overlays.svg`
+**Source diagram:** [GOMP / smart_edu request-flow diagram](./as-is-gomp-digital-request-flow.svg)
 
 ### 4.1 Participants and responsibilities
 
@@ -112,9 +112,9 @@ The key modeled difference is upstream of Secretariat fulfilment. The manual var
 | Finding from the process model | Operational implication | Analysis focus |
 |---|---|---|
 | Secretariat activities remain in both variants. | Digitized intake alone does not remove fulfilment workload. | Separate judgement-based work from repeatable, rule-based activities. |
-| The automatic variant includes a backend success/failure decision. | A control point determines whether the request proceeds to Secretariat fulfilment. | Define decision rules and map backend errors to actionable user messages. |
+| The GOMP / smart_edu variant includes a backend success/failure decision. | A control point determines whether the request proceeds to Secretariat fulfilment. | Define decision rules and map backend errors to actionable user messages. |
 | The manual variant does not model a separate exception route. | Exception handling should be made explicit in the end-to-end process. | Define ownership and communication for incomplete, invalid, or ineligible requests. |
-| The automatic variant shows an error message and an `OK` interaction, without a subsequent recovery step. | The error journey needs an explicit next action and end state. | Specify whether users can correct, save, cancel, retry, or resubmit. |
+| The GOMP / smart_edu variant shows an error message and an `OK` interaction, without a subsequent recovery step. | The error journey needs an explicit next action and end state. | Specify whether users can correct, save, cancel, retry, or resubmit. |
 | The models focus on workflow and hand-offs rather than operational performance data. | Combine BPMN analysis with process metrics to assess service performance. | Capture processing time, request volume, backlog, and rework rate. |
 | Both diagrams end with certificate delivery and receipt; the delivery channel is not shown. | The delivery step should be specified consistently across the process and user journey. | Document the channel, format, and delivery confirmation. |
 
@@ -124,7 +124,7 @@ The two modeled flows highlight the following operational risks and improvement 
 
 1. **Repeated manual fulfilment steps.** Verification, preparation, generation, and delivery appear as Secretariat activities in both variants. Review these steps for manual data entry, duplicate checks, and avoidable hand-offs.
 2. **Limited visibility into request status.** Neither diagram shows a status-tracking activity, queue state, or notification sequence. A consistent status model should make it possible to identify whether a request is received, in progress, blocked, or completed.
-3. **Unspecified exception recovery.** The automatic diagram ends its modeled error path at the acknowledgement interaction. Define a clear student recovery path and ensure failed requests remain traceable.
+3. **Unspecified exception recovery.** The GOMP / smart_edu diagram ends its modeled error path at the acknowledgement interaction. Define a clear student recovery path and ensure failed requests remain traceable.
 4. **Unspecified validation and eligibility rules.** The diagrams show verification of student information but not the data checked, the authoritative source, or the rules applied. Document the relevant rules and data sources before specifying validation automation.
 5. **Unmeasured service performance.** No cycle times, waiting times, throughput, or rework data are shown. Use a measured baseline to quantify the effect of any redesigned process.
 
@@ -132,9 +132,9 @@ The two modeled flows highlight the following operational risks and improvement 
 
 | Control area | Current-state evidence | Control requirement |
 |---|---|---|
-| Request validation | A backend outcome decision in the automatic variant; student-information verification by the Secretariat in both variants | Define validation rules, authoritative data sources, handling of missing or conflicting data, and audit trail. |
+| Request validation | A backend outcome decision in the GOMP / smart_edu variant; student-information verification by the Secretariat in both variants | Define validation rules, authoritative data sources, handling of missing or conflicting data, and audit trail. |
 | Error handling | Backend error → frontend error display → student `OK` interaction | Establish an error taxonomy, actionable messages, recovery and resubmission behavior, logging, and ownership. |
-| Responsibility | Student, GOMP Frontend, GOMP Backend, and Secretariat lanes in the automatic variant | Assign operational ownership, escalation, and responsibility for stalled requests. |
+| Responsibility | Student, GOMP Frontend, GOMP Backend, and Secretariat lanes in the GOMP / smart_edu variant | Assign operational ownership, escalation, and responsibility for stalled requests. |
 | Certificate generation | A generation activity is assigned to the Secretariat lane | Specify generation tools, templates, quality checks, and controls against incorrect issuance. |
 | Delivery | A delivery activity and student receipt are shown | Define the delivery channel, confirmation, failed-delivery handling, and record retention. |
 | Measurement | Neither diagram includes performance metrics | Establish baseline KPIs and capture reliable event timestamps. |
@@ -204,7 +204,7 @@ The two BPMN diagrams provide the process structure for this analysis. The KPI b
 ## 12. Source diagrams
 
 - [Manual certificate issuance BPMN](./AS IS — Manual Certificate Issuance.svg)
-- [Automatic certificate issuance through GOMP / smart_edu BPMN](./AS IS — Automatic Certificate Issuance (GOMP _ smart_edu)_with_overlays.svg)
+- [GOMP / smart_edu request flow with Secretariat fulfilment BPMN](./AS IS — Automatic Certificate Issuance (GOMP _ smart_edu)_with_overlays.svg)
 
 ---
 
