@@ -18,7 +18,7 @@ The Backend selects a template based on the certificate type specified in the st
 
 | Condition | System Behaviour | Processing Route |
 |---|---|---|
-| Exactly one active template matches the requested certificate type | Retrieve the template and continue automatic generation | Automated |
+| Exactly one active, approved template matches the requested certificate type | Retrieve the template and continue automatic generation | Automated |
 | No active, approved template matches the requested certificate type | Route the request to the Student Secretariat | Manual processing |
 | Multiple active, approved templates match the requested certificate type | Stop automatic selection and route the request for review | Manual review |
 
