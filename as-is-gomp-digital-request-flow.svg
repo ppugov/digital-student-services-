@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2080" height="760" viewBox="0 0 2080 760">
+  <title>AS-IS GOMP / smart_edu certificate request flow with Secretariat fulfilment</title>
+  <desc>Four-lane BPMN-style process. The student submits a certificate request through GOMP / smart_edu. The frontend passes it to the backend, which evaluates the request. An unsuccessful request produces an error message acknowledged by the student. A successful request is passed to the Student Secretariat for verification, preparation, generation, and delivery.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#475569"/>
+    </marker>
+    <style>
+      .lane{stroke:#94a3b8;stroke-width:1.5}
+      .lane-title{font:600 20px Arial,sans-serif;fill:#0f172a}
+      .task{fill:#ffffff;stroke:#475569;stroke-width:2}
+      .task-text{font:15px Arial,sans-serif;fill:#0f172a;text-anchor:middle}
+      .flow{fill:none;stroke:#475569;stroke-width:2.5;marker-end:url(#arrow)}
+      .note{font:14px Arial,sans-serif;fill:#475569}
+      .event{fill:#ffffff;stroke:#334155;stroke-width:3}
+      .gateway{fill:#ffffff;stroke:#334155;stroke-width:2.5}
+    </style>
+  </defs>
+  <rect width="2080" height="760" fill="#ffffff"/>
+  <text x="45" y="38" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#0f172a">AS-IS — GOMP / smart_edu Certificate Request Flow</text>
+  <text x="45" y="62" class="note">Digital request intake with manual Secretariat fulfilment</text>
+
+  <rect x="40" y="82" width="1995" height="145" fill="#f8fafc" class="lane"/>
+  <rect x="40" y="227" width="1995" height="135" fill="#f1f5f9" class="lane"/>
+  <rect x="40" y="362" width="1995" height="150" fill="#f8fafc" class="lane"/>
+  <rect x="40" y="512" width="1995" height="150" fill="#f1f5f9" class="lane"/>
+  <rect x="40" y="82" width="190" height="145" fill="#e2e8f0" class="lane"/>
+  <rect x="40" y="227" width="190" height="135" fill="#e2e8f0" class="lane"/>
+  <rect x="40" y="362" width="190" height="150" fill="#e2e8f0" class="lane"/>
+  <rect x="40" y="512" width="190" height="150" fill="#e2e8f0" class="lane"/>
+  <text x="58" y="160" class="lane-title">Student</text>
+  <text x="58" y="297" class="lane-title">GOMP</text>
+  <text x="58" y="321" class="lane-title">Frontend</text>
+  <text x="58" y="430" class="lane-title">GOMP</text>
+  <text x="58" y="454" class="lane-title">Backend</text>
+  <text x="58" y="577" class="lane-title">Student</text>
+  <text x="58" y="601" class="lane-title">Secretariat</text>
+
+  <!-- Student request path -->
+  <circle cx="255" cy="150" r="17" class="event"/>
+  <path d="M272 150 H290" class="flow"/>
+  <rect x="290" y="116" width="140" height="68" rx="12" class="task"/>
+  <text x="360" y="143" class="task-text"><tspan x="360">Wants a</tspan><tspan x="360" dy="19">certificate</tspan></text>
+  <path d="M430 150 H450" class="flow"/>
+  <rect x="450" y="116" width="140" height="68" rx="12" class="task"/>
+  <text x="520" y="143" class="task-text"><tspan x="520">Opens</tspan><tspan x="520" dy="19">the portal</tspan></text>
+  <path d="M590 150 H610" class="flow"/>
+  <rect x="610" y="116" width="140" height="68" rx="12" class="task"/>
+  <text x="680" y="143" class="task-text"><tspan x="680">Selects</tspan><tspan x="680" dy="19">certificate</tspan></text>
+  <path d="M750 150 H770" class="flow"/>
+  <rect x="770" y="116" width="140" height="68" rx="12" class="task"/>
+  <text x="840" y="143" class="task-text"><tspan x="840">Submits</tspan><tspan x="840" dy="19">request</tspan></text>
+
+  <!-- Frontend -->
+  <path d="M910 150 H922 V263 H940" class="flow"/>
+  <rect x="940" y="242" width="150" height="72" rx="12" class="task"/>
+  <text x="1015" y="270" class="task-text"><tspan x="1015">Receives</tspan><tspan x="1015" dy="19">request</tspan></text>
+
+  <!-- Backend and decision -->
+  <path d="M1090 278 H1110 V417 H1130" class="flow"/>
+  <rect x="1130" y="382" width="150" height="72" rx="12" class="task"/>
+  <text x="1205" y="410" class="task-text"><tspan x="1205">Processes</tspan><tspan x="1205" dy="19">request</tspan></text>
+  <path d="M1280 418 H1302" class="flow"/>
+  <polygon points="1342,378 1382,418 1342,458 1302,418" class="gateway"/>
+  <text x="1342" y="423" font-family="Arial,sans-serif" font-size="13" font-weight="700" text-anchor="middle" fill="#0f172a">?</text>
+  <text x="1390" y="399" class="note">Outcome</text>
+  <text x="1390" y="416" class="note">successful?</text>
+
+  <!-- Error path -->
+  <path d="M1342 378 V278 H1410" class="flow"/>
+  <text x="1355" y="264" class="note">No</text>
+  <rect x="1410" y="242" width="145" height="72" rx="12" class="task"/>
+  <text x="1482" y="270" class="task-text"><tspan x="1482">Displays</tspan><tspan x="1482" dy="19">error</tspan></text>
+  <path d="M1555 278 H1570 V150 H1600" class="flow"/>
+  <rect x="1600" y="116" width="130" height="68" rx="12" class="task"/>
+  <text x="1665" y="143" class="task-text"><tspan x="1665">Acknowledges</tspan><tspan x="1665" dy="19">with OK</tspan></text>
+  <path d="M1730 150 H1745" class="flow"/>
+  <circle cx="1765" cy="150" r="17" class="event"/>
+  <text x="1765" y="190" class="note" text-anchor="middle">End</text>
+
+  <!-- Successful manual fulfilment route -->
+  <path d="M1382 418 H1400 V548 H1415" class="flow"/>
+  <text x="1392" y="490" class="note">Yes</text>
+  <rect x="1415" y="532" width="140" height="68" rx="12" class="task"/>
+  <text x="1485" y="559" class="task-text"><tspan x="1485">Verifies student</tspan><tspan x="1485" dy="19">information</tspan></text>
+  <path d="M1555 566 H1570" class="flow"/>
+  <rect x="1570" y="532" width="130" height="68" rx="12" class="task"/>
+  <text x="1635" y="559" class="task-text"><tspan x="1635">Prepares</tspan><tspan x="1635" dy="19">certificate</tspan></text>
+  <path d="M1700 566 H1715" class="flow"/>
+  <rect x="1715" y="532" width="130" height="68" rx="12" class="task"/>
+  <text x="1780" y="559" class="task-text"><tspan x="1780">Generates</tspan><tspan x="1780" dy="19">certificate</tspan></text>
+  <path d="M1845 566 H1860" class="flow"/>
+  <rect x="1860" y="532" width="145" height="68" rx="12" class="task"/>
+  <text x="1932" y="559" class="task-text"><tspan x="1932">Delivers</tspan><tspan x="1932" dy="19">certificate</tspan></text>
+  <path d="M2005 566 H2020 V150 H2000" class="flow"/>
+  <rect x="1840" y="116" width="160" height="68" rx="12" class="task"/>
+  <text x="1920" y="143" class="task-text"><tspan x="1920">Receives</tspan><tspan x="1920" dy="19">certificate</tspan></text>
+  <text x="45" y="713" class="note">The backend success branch hands the request to the Student Secretariat; certificate preparation and delivery remain manual.</text>
+</svg>
